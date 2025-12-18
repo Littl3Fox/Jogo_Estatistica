@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Floresta</title>
+    <script src="{{ url_for('static', filename='js/timer.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                url("/static/background/floresta.jpg");
+            background-size: cover;       /* cobre toda a tela */
+            background-position: center;  /* centraliza a imagem */
+            background-repeat: no-repeat; /* evita repetição */
+        }
+    </style>
+
+<style>
+    p {
+        font-size: 1.25rem; /* 20px */
+        font-weight: 500;   /* um pouco mais forte */
+    }
+</style>
+</head>
+
+
+<body class="bg-dark text-white p-5">
+
+<div class="d-flex justify-content-center mt-3"><h2>Floresta</h2></div>
+
+    <p>
+        Escolhido pelo próprio Rei para enfrentar o dragão que ameaça o reino, você avança pela sombria Floresta dos Monstros.
+        A trilha que leva até a caverna, onde repousa o ninho da criatura,
+        se estreita. De repente, goblins emergem das sombras, famintos e ferozes. Seus olhos brilham com malícia, 
+        mas você sente que ainda há uma chance de persuadi-los — se escolher as palavras certas.
+    </p>
+<p>
+    <strong>
+    Humano… ontem contei quantas porções de comida meus irmãos comeram: 1, 3, 6, 8 e 3 porções. 
+    Me diz aí… qual foi o número que apareceu mais vezes?
+    </strong>
+</p>
+
+
+
+
+<!-- Tempo para o JS -->
+ <div class="d-flex justify-content-center mt-3">
+    <div id="tempo" data-value="{{ tempo }}" ></div>
+    <h4>Tempo restante: <span id="contador">{{ tempo }}</span> segundos</h4>
+ </div>
+
+
+<!-- FORM normal de escolha -->
+<form id="form" action="/add_ponto" method="POST">
+    <input type="hidden" name="proxima" value="cena2">
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <button class="btn btn-success mt-3" name="valor" value="0">
+            1
+        </button>
+
+        <button class="btn btn-success mt-3" name="valor" value="0">
+            3
+        </button>
+
+        <button class="btn btn-success mt-3" name="valor" value="20">
+            6
+        </button>
+
+        <button class="btn btn-success mt-3" name="valor" value="30">
+            8
+        </button>
+
+        <button class="btn btn-success mt-3" name="valor" value="0">
+            3
+        </button>
+    </div>
+</form>
+
+<!-- FORM invisível para penalidade -->
+<form id="penalidade" action="/penalidade" method="POST" style="display:none;">
+    <input type="hidden" name="proxima" value="cena2">
+</form>
+
+</body>
+</html>
